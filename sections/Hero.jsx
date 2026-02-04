@@ -3,7 +3,7 @@ const Hero = () => {
   return (
     <section className="bg-main-bg">
         <div className="hero-container">
-            <img src="/images/hero-img.png" alt="bg-image" className="absolute bottom-0 left-1/2 -translate-x-1/2 object-auto scale-100 md:scale-150" />
+            <img src="/images/static-img.png" alt="bg-image" className="absolute bottom-0 left-1/2 -translate-x-1/2 object-auto scale-100 md:scale-150" />
 
             <div className="hero-content">
                 <div className="overflow-hidden">
@@ -14,7 +14,15 @@ const Hero = () => {
                         <h1>Protein + Caffeine</h1>
                     </div>
                 </div>
+            <h2>
+                Live Life to the fullest with SPLYT: Shatter boredom and embrace
+                your inner kid with every deliciously chug
+            </h2>
+            <div className="hero-button">
+                <button>Chug a SPLYT</button>
             </div>
+            </div>
+
 
         </div>
     </section>
