@@ -14,33 +14,32 @@ const FlavorTitle = () => {
     
     const revealTl = gsap.timeline({
         scrollTrigger:{
-            trigger:".general-title",
-            start:"top 70%",
-            end:"bottom 80%"
+            trigger:".flavor-section",
+            start:"top 30%",
         },
     })
 
     revealTl.from(firstSplit.chars,{
         stagger:0.05,
-        duration:1,
+        duration:0.5,
         yPercent:200,
         ease:"power2.out",
         
     })
     revealTl.from(secondSplit.chars,{
         stagger:0.05,
-        duration:1,
+        duration:0.5,
         yPercent:200,
         ease:"power2.out",
         
     })
 
     revealTl.to(".flavor-text-scroll",{
-        duration:1,
+        duration:0.5,
         clipPath:"polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%",
         ease:"circ.inOut",
         
-    } )
+    },"=-0.5" )
 
 
 
