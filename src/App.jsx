@@ -15,6 +15,9 @@ function App() {
       <Hero />
       <Message />
       <FlavorSection/>
+      <div className="h-dvh">
+
+      </div>
     </main>
   );
 }
