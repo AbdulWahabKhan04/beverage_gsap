@@ -13,7 +13,7 @@ const FlavorSlider = () => {
         start: "2% top",
         end:`+=${sliderAmount + 1500}px`,
         scrub: true,
-        markers:true,
+        // markers:true,
         pin:true,
       },
     });
