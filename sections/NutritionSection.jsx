@@ -1,7 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { nutrientLists } from "../constants";
+import {useMediaQuery} from "react-responsive"
+import {useGSAP} from "@gsap/react"
+import { SplitText } from "gsap/all";
+import gsap from "gsap";
 
 function NutritionSection() {
+  const isMobile = useMediaQuery({
+    query:"(max-width:768px)"
+  })
+  const [lists,setLists] = useState(nutrientLists)
+
+  useGSAP(()=>{
+     const titleSplit = SplitText.create(".nutrition-title",{
+      type:"chars"
+     })
+      const pSplit = SplitText.create(".nutrition-section p",{
+        type:"words,lines",
+        linesClass:"paragraph-line"
+      })
+
+      const contentTl = gsap.timeline({
+        scrollTrigger:{
+          trigger:".nutrition-section",
+          start:"top center",
+          
+        }
+      })
+
+      contentTl.from(titleSplit.chars,{
+        yPercent:100,
+        stagger:0.03,
+        ease:"power2.out"
+      }).from(pSplit.words,{
+        yPercent:300,
+        rotate:3,
+        ease:"power1.inOut",
+        duration:1,
+        stagger:0.01,
+      })
+
+
+  })
+
+  useEffect(()=>{
+    if(isMobile){
+      setLists(nutrientLists.slice(0,3))
+    } else{
+      setLists(nutrientLists)
+    }
+  },[isMobile])
   return (
     <section className="nutrition-section">
       <img
@@ -16,7 +64,7 @@ function NutritionSection() {
         <div className="relative inline-block md:translate-y-20">
           <div className="general-title relative flex flex-col justify-center gap-24 itemes-center">
             <div className="overflow-hidden place-self-start">
-              <h1>It still does</h1>
+              <h1 className="nutrition-title">It still does</h1>
             </div>
             <div className="nutrition-text-scroll place-self-start">
               <div className="bg-yellow-brown pb-5 md:pt-0 pt-3 md:px-5 px-3 inline-block">
@@ -37,7 +85,7 @@ function NutritionSection() {
         <div className="nutrition-box">
             <div className="list-wrapper">
                 {
-                    nutrientLists.map((e,i)=>{
+                    lists.map((e,i)=>{
                      return  <div key={i} className="relative flex-1 col-center">
                             <div>
                                 <p className="md:text-lg font-paragraph">{e.label}</p>
@@ -46,7 +94,7 @@ function NutritionSection() {
                             </div>
 
                             {
-                                i !== nutrientLists.length-1 && <div className="spacer-border" />
+                                i !== lists.length-1 && <div className="spacer-border" />
                             }
                         </div>
                     })
