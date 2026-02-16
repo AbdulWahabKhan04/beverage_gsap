@@ -62,7 +62,7 @@ function NutritionSection() {
 
       <div className="flex md:flex-row flex-col justify-between md:px-10 px-5 mnt-14 md:mt-0">
         <div className="relative inline-block md:translate-y-20">
-          <div className="general-title relative flex flex-col justify-center gap-24 itemes-center">
+          <div className="general-title relative flex flex-col justify-center gap-24 items-center">
             <div className="overflow-hidden place-self-start">
               <h1 className="nutrition-title">It still does</h1>
             </div>
