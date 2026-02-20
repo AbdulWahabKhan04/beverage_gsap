@@ -1,7 +1,49 @@
 import React, { useRef } from "react";
 import { cards } from "../constants";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 function TestimonialSection() {
+  useGSAP(()=>{
+    gsap.set(".testimonials-section",{
+      marginTop:"-140vh",
+    })
+  
+
+  const tl = gsap.timeline({
+    scrollTrigger:{
+      trigger:".testimonials-section",
+      start:"top bottom",
+      end:"200% top",
+      scrub:true,
+
+    }
+  })
+
+  tl.to(".testimonials-section .first-title ",{
+    xPercent:70, 
+  }).to(".testimonials-section .second-title ",{
+    xPercent:25,
+  },"<").to(".testimonials-section .third-title ",{
+    xPercent:-50,
+  },"<")
+
+  const pinTL = gsap.timeline({
+    scrollTrigger:{
+      trigger:".testimonials-section",
+      start:"10% top",
+      end:"200% top",
+      scrub:1.5,
+      pin:true
+    }
+  })
+
+  pinTL.from(".vd-card",{
+    yPercent:150,
+    stagger:0.3,
+    ease:"power1.inOut"
+  })
+})
   const handleMouseEnter = (i) => {
     const video = vdRef.current[i]
     video.play()
